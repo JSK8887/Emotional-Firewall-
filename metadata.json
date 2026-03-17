@@ -1,0 +1,5 @@
+{
+  "name": "  Emotional _Firewall_Safety",
+  "description": "Scam manipulation detector using Gemini AI to identify emotional triggers and fraudulent tactics in messages.",
+  "requestFramePermissions": []
+}

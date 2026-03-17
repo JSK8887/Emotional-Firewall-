@@ -1,0 +1,52 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile information",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "displayName": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "email"]
+    },
+    "Analysis": {
+      "title": "Analysis",
+      "description": "A record of a message analysis",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "message": { "type": "string" },
+        "score": { "type": "integer" },
+        "warning": { "type": "string" },
+        "highlighted": { "type": "string" },
+        "risky_words": { "type": "array", "items": { "type": "string" } },
+        "timestamp": { "type": "string", "format": "date-time" },
+        "tactics": {
+          "type": "object",
+          "properties": {
+            "Urgency": { "type": "integer" },
+            "Authority": { "type": "integer" },
+            "Fear": { "type": "integer" },
+            "Greed": { "type": "integer" },
+            "Sympathy": { "type": "integer" }
+          }
+        }
+      },
+      "required": ["userId", "message", "score", "timestamp"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profiles"
+    },
+    "/analyses/{analysisId}": {
+      "schema": "Analysis",
+      "description": "History of message analyses"
+    }
+  }
+}
